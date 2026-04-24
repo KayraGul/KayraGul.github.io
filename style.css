@@ -9,7 +9,7 @@ html {
 body {
     margin: 0;
     background:
-        radial-gradient(circle at top left, rgba(32, 76, 148, 0.12), transparent 25%),
+        radial-gradient(circle at top left, rgba(32, 76, 148, 0.10), transparent 25%),
         radial-gradient(circle at bottom right, rgba(15, 42, 86, 0.08), transparent 30%),
         #f5f7fb;
     color: #1f2937;
@@ -58,7 +58,7 @@ a:hover {
     right: -100px;
     top: -120px;
     border-radius: 50%;
-    background: rgba(18, 60, 140, 0.10);
+    background: rgba(18, 60, 140, 0.08);
 }
 
 .hero-photo,
@@ -123,7 +123,7 @@ a:hover {
 
 .hero-info-grid p {
     margin: 0;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.80);
     border: 1px solid #dce4f0;
     border-radius: 18px;
     padding: 14px 16px;
@@ -176,7 +176,7 @@ a:hover {
 }
 
 .panel {
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(255, 255, 255, 0.92);
     border: 1px solid #dbe4f1;
     border-radius: 28px;
     padding: 28px 30px;
@@ -267,23 +267,34 @@ strong {
 .project-card h3 {
     margin: 0 0 14px;
     color: #0f2a56;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1.35;
 }
 
-.project-grid .project-card:not(.featured-project) h3 {
-    font-size: 24px;
+.project-card p {
+    font-size: 16px;
+    line-height: 1.65;
 }
+
+/* FEATURED PROJECT FIX */
 
 .featured-project {
-    background: linear-gradient(140deg, #163f7a 0%, #2457a3 100%);
-    color: #ffffff;
+    background: linear-gradient(140deg, #1c4787 0%, #2b63b7 100%);
+    color: #ffffff !important;
 }
 
+.featured-project,
 .featured-project h3,
 .featured-project p,
-.featured-project strong {
+.featured-project strong,
+.featured-project span,
+.featured-project div {
     color: #ffffff !important;
+}
+
+.featured-project h3 {
+    font-size: 24px;
+    line-height: 1.35;
 }
 
 .project-links {
@@ -298,18 +309,18 @@ strong {
     padding: 10px 15px;
     border-radius: 999px;
     background: #0f2a56;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 15px;
 }
 
 .featured-project .project-links a {
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    color: #ffffff !important;
 }
 
 .featured-project .project-links a:hover {
-    background: rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.28);
 }
 
 .project-links a:hover {
@@ -530,7 +541,7 @@ footer {
     }
 
     .project-card h3,
-    .project-grid .project-card:not(.featured-project) h3 {
+    .featured-project h3 {
         font-size: 22px;
     }
 
