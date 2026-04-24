@@ -111,3 +111,39 @@ footer {
         font-size: 26px;
     }
 }
+
+.page-title {
+    color: #000080;
+    font-size: 30px;
+    border-bottom: 1px solid #000080;
+    padding-bottom: 8px;
+    margin-bottom: 32px;
+}
+
+.back-link {
+    margin-bottom: 28px;
+    font-size: 13px;
+}
+
+.course-section {
+    margin-bottom: 34px;
+}
+
+.term-title {
+    color: #000080;
+    font-size: 18px;
+    border-bottom: 1px solid #cfcfcf;
+    padding-bottom: 6px;
+    margin-top: 30px;
+    margin-bottom: 14px;
+}
+
+.course-list {
+    list-style-type: square;
+    padding-left: 20px;
+    margin-bottom: 28px;
+}
+
+.course-list li {
+    margin-bottom: 8px;
+}
