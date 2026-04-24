@@ -233,3 +233,12 @@ footer {
         line-height: 1.75;
     }
 }
+.intro h1 .name-link,
+.intro h1 .name-link:link,
+.intro h1 .name-link:visited,
+.intro h1 .name-link:hover,
+.intro h1 .name-link:active {
+    color: #000080;
+    text-decoration: underline;
+    font-weight: inherit;
+}
