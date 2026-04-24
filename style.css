@@ -8,7 +8,7 @@ body {
 }
 
 .page {
-    width: 760px;
+    width: 780px;
     margin: 40px auto;
 }
 
@@ -24,6 +24,7 @@ body {
     object-fit: cover;
     border: 1px solid #bfbfbf;
     padding: 4px;
+    background-color: #ffffff;
 }
 
 .intro {
