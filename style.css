@@ -148,13 +148,17 @@ footer {
     margin-bottom: 8px;
 }
 .name-link {
-    color: #0000cc;
+    color: inherit;
     text-decoration: underline;
     font-weight: inherit;
 }
 
+.name-link:visited {
+    color: inherit;
+}
+
 .name-link:hover {
-    color: #000080;
+    color: inherit;
     text-decoration: underline;
 }
 
