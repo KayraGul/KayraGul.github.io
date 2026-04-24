@@ -8,24 +8,24 @@
 </head>
 <body>
 
-    <div class="site-shell">
+    <main class="site">
 
-        <aside class="profile-panel">
-            <div class="profile-inner">
-                <div class="photo-box">
-                    <img src="assets/profile.jpg" alt="Yusuf Kayra Gül">
-                </div>
+        <section class="hero-card">
+            <div class="hero-photo">
+                <img src="assets/profile.jpg" alt="Yusuf Kayra Gül">
+            </div>
 
-                <p class="eyebrow">Undergraduate Physics Student</p>
+            <div class="hero-info">
+                <p class="label">Undergraduate Physics Student</p>
 
                 <h1>
                     Yusuf <a class="name-link" href="kayra.html">Kayra</a> Gül
                 </h1>
 
-                <p class="affiliation">Department of Physics, Bilkent University</p>
-                <p class="location">Ankara, 06800 Türkiye</p>
+                <p class="hero-subtitle">Department of Physics, Bilkent University</p>
+                <p class="hero-subtitle">Ankara, 06800 Türkiye</p>
 
-                <div class="contact-list">
+                <div class="contact-grid">
                     <p>
                         <span>E-mail</span>
                         <a href="mailto:kayra.gul@ug.bilkent.edu.tr">kayra.gul@ug.bilkent.edu.tr</a>
@@ -46,161 +46,157 @@
                         <a href="https://www.youtube.com/@yusufkayragul320" target="_blank">@yusufkayragul320</a>
                     </p>
                 </div>
-
-                <nav class="side-nav">
-                    <a href="#biography">Biography</a>
-                    <a href="#education">Education</a>
-                    <a href="#awards">Awards</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#activities">Activities</a>
-                    <a href="#links">Links</a>
-                </nav>
             </div>
-        </aside>
+        </section>
 
-        <main class="content-panel">
+        <nav class="top-nav">
+            <a href="#biography">Biography</a>
+            <a href="#education">Education</a>
+            <a href="#awards">Awards</a>
+            <a href="#projects">Projects</a>
+            <a href="#activities">Activities</a>
+            <a href="#links">Links</a>
+        </nav>
 
-            <section id="biography" class="section-block">
-                <div class="section-number">01</div>
-                <div class="section-content">
-                    <h2>BIOGRAPHY</h2>
+        <section id="biography" class="section-block section-wide">
+            <div class="section-header">
+                <span>01</span>
+                <h2>BIOGRAPHY</h2>
+            </div>
+
+            <p>
+                I am an undergraduate Physics student at Bilkent University. My academic interests include
+                theoretical physics, computational physics, quantum optics, spectroscopy, and scientific computing.
+                I enjoy combining theoretical understanding, laboratory work, numerical analysis, and programming
+                to study physical systems.
+            </p>
+        </section>
+
+        <section id="education" class="section-block">
+            <div class="section-header">
+                <span>02</span>
+                <h2>EDUCATION</h2>
+            </div>
+
+            <div class="mini-grid">
+                <div class="mini-card">
                     <p>
-                        I am an undergraduate Physics student at Bilkent University. My academic interests include
-                        theoretical physics, computational physics, quantum optics, spectroscopy, and scientific computing.
-                        I enjoy combining theoretical understanding, laboratory work, numerical analysis, and programming
-                        to study physical systems.
+                        <strong>Bilkent University</strong><br>
+                        B.S. in Physics, 2023&ndash;Present<br>
+                        High Honour Student
                     </p>
                 </div>
-            </section>
 
-            <section id="education" class="section-block">
-                <div class="section-number">02</div>
-                <div class="section-content">
-                    <h2>EDUCATION</h2>
-
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <p>
-                                <strong>Bilkent University</strong><br>
-                                B.S. in Physics, 2023&ndash;Present<br>
-                                High Honour Student
-                            </p>
-                        </div>
-
-                        <div class="info-card">
-                            <p>
-                                <strong>Sümer Science High School</strong><br>
-                                High School Diploma, 2019&ndash;2023<br>
-                                Kayseri, Türkiye
-                            </p>
-                        </div>
-                    </div>
+                <div class="mini-card">
+                    <p>
+                        <strong>Sümer Science High School</strong><br>
+                        High School Diploma, 2019&ndash;2023<br>
+                        Kayseri, Türkiye
+                    </p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="awards" class="section-block">
-                <div class="section-number">03</div>
-                <div class="section-content">
-                    <h2>SCHOLARSHIPS &amp; AWARDS</h2>
+        <section id="awards" class="section-block">
+            <div class="section-header">
+                <span>03</span>
+                <h2>SCHOLARSHIPS &amp; AWARDS</h2>
+            </div>
 
-                    <div class="stack">
-                        <p>
-                            <strong>Bilkent University Comprehensive Merit Scholarship:</strong>
-                            Awarded upon university admission for ranking 3,369th among roughly 3 million candidates
-                            in Türkiye’s National University Entrance Exam.
-                        </p>
+            <div class="text-stack">
+                <p>
+                    <strong>Bilkent University Comprehensive Merit Scholarship:</strong>
+                    Awarded upon university admission for ranking 3,369th among roughly 3 million candidates
+                    in Türkiye’s National University Entrance Exam.
+                </p>
 
-                        <p>
-                            <strong>TÜBİTAK 2205 Undergraduate Scholarship:</strong>
-                            Awarded by TÜBİTAK for university entrance exam achievement.
-                        </p>
+                <p>
+                    <strong>TÜBİTAK 2205 Undergraduate Scholarship:</strong>
+                    Awarded by TÜBİTAK for university entrance exam achievement.
+                </p>
 
-                        <p>
-                            <strong>TOG Bezmen Science Scholarship:</strong>
-                            Granted for maintaining a GPA above 3.50 in Physics.
-                        </p>
+                <p>
+                    <strong>TOG Bezmen Science Scholarship:</strong>
+                    Granted for maintaining a GPA above 3.50 in Physics.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects" class="section-block">
+            <div class="section-header">
+                <span>04</span>
+                <h2>PROJECTS &amp; RESEARCH</h2>
+            </div>
+
+            <div class="project-mosaic">
+                <article class="project-card project-large">
+                    <h3>Observation of Black-body Radiation and Flame Emission Spectra of Alkali Metals by Using Visible Light Spectroscopy</h3>
+                    <div class="project-links">
+                        <a href="assets/reports/PHYS212_FinalReport.pdf" target="_blank">View Report</a>
+                        <a href="https://www.youtube.com/watch?v=a2NhYbi8bzY" target="_blank">Watch Demonstration</a>
                     </div>
-                </div>
-            </section>
+                </article>
 
-            <section id="projects" class="section-block">
-                <div class="section-number">04</div>
-                <div class="section-content">
-                    <h2>PROJECTS &amp; RESEARCH</h2>
-
-                    <div class="project-list">
-
-                        <article class="project-item">
-                            <h3>Observation of Black-body Radiation and Flame Emission Spectra of Alkali Metals by Using Visible Light Spectroscopy</h3>
-                            <div class="project-links">
-                                <a href="assets/reports/PHYS212_FinalReport.pdf" target="_blank">View Report</a>
-                                <a href="https://www.youtube.com/watch?v=a2NhYbi8bzY" target="_blank">Watch Demonstration</a>
-                            </div>
-                        </article>
-
-                        <article class="project-item">
-                            <h3>Vibration Analysis of a Loudspeaker via Michelson Interferometer</h3>
-                            <p>This project received the Best Project Award.</p>
-                            <div class="project-links">
-                                <a href="assets/reports/PHYS211_FinalReport.pdf" target="_blank">View Report</a>
-                                <a href="https://www.youtube.com/watch?v=KqWnFWd6NJk" target="_blank">Watch Demonstration</a>
-                            </div>
-                        </article>
-
-                        <article class="project-item">
-                            <h3>Tetrahedron Electrostatics</h3>
-                            <p>
-                                A computational physics project solving Laplace’s equation inside a tetrahedron with
-                                constant electric potentials on its boundary surfaces.
-                            </p>
-                            <div class="project-links">
-                                <a href="https://nbviewer.org/github/KayraGul/KayraGul.github.io/blob/main/notebooks/GUL_FinalProject.ipynb" target="_blank">View Notebook</a>
-                            </div>
-                        </article>
-
+                <article class="project-card">
+                    <h3>Vibration Analysis of a Loudspeaker via Michelson Interferometer</h3>
+                    <p>This project received the Best Project Award.</p>
+                    <div class="project-links">
+                        <a href="assets/reports/PHYS211_FinalReport.pdf" target="_blank">View Report</a>
+                        <a href="https://www.youtube.com/watch?v=KqWnFWd6NJk" target="_blank">Watch Demonstration</a>
                     </div>
-                </div>
-            </section>
+                </article>
 
-            <section id="activities" class="section-block">
-                <div class="section-number">05</div>
-                <div class="section-content">
-                    <h2>EXTRACURRICULAR ACTIVITIES</h2>
-
-                    <div class="stack">
-                        <p>
-                            <strong>Board Member, Bilkent Physics Society:</strong>
-                            Co-organized academic seminars, social events, and outreach programs for physics students.
-                        </p>
-
-                        <p>
-                            <strong>Editor, Bilkent Science Literacy Society:</strong>
-                            Reviews and fact checks senior level articles about physics and collaborates with writers and designers
-                            to produce science communication content.
-                        </p>
+                <article class="project-card">
+                    <h3>Tetrahedron Electrostatics</h3>
+                    <p>
+                        A computational physics project solving Laplace’s equation inside a tetrahedron with
+                        constant electric potentials on its boundary surfaces.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://nbviewer.org/github/KayraGul/KayraGul.github.io/blob/main/notebooks/GUL_FinalProject.ipynb" target="_blank">View Notebook</a>
                     </div>
-                </div>
-            </section>
+                </article>
+            </div>
+        </section>
 
-            <section id="links" class="section-block">
-                <div class="section-number">06</div>
-                <div class="section-content">
-                    <h2>LINKS &amp; PAGES</h2>
+        <section id="activities" class="section-block">
+            <div class="section-header">
+                <span>05</span>
+                <h2>EXTRACURRICULAR ACTIVITIES</h2>
+            </div>
 
-                    <div class="large-links">
-                        <a href="assets/cv.pdf" target="_blank">Curriculum Vitae</a>
-                        <a href="courses.html">Previously Taken Courses</a>
-                    </div>
-                </div>
-            </section>
+            <div class="text-stack">
+                <p>
+                    <strong>Board Member, Bilkent Physics Society:</strong>
+                    Co-organized academic seminars, social events, and outreach programs for physics students.
+                </p>
 
-            <footer>
-                <p>Last updated: April 2026</p>
-            </footer>
+                <p>
+                    <strong>Editor, Bilkent Science Literacy Society:</strong>
+                    Reviews and fact checks senior level articles about physics and collaborates with writers and designers
+                    to produce science communication content.
+                </p>
+            </div>
+        </section>
 
-        </main>
+        <section id="links" class="section-block">
+            <div class="section-header">
+                <span>06</span>
+                <h2>LINKS &amp; PAGES</h2>
+            </div>
 
-    </div>
+            <div class="link-row">
+                <a href="assets/cv.pdf" target="_blank">Curriculum Vitae</a>
+                <a href="courses.html">Previously Taken Courses</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Last updated: April 2026</p>
+            <p class="schrodinger-easter-egg">iℏ ∂<sub>t</sub>|ψ⟩ = H|ψ⟩</p>
+        </footer>
+
+    </main>
 
 </body>
 </html>
