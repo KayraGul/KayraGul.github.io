@@ -3,24 +3,25 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-family: "Times New Roman", Times, serif;
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: 19px !important;
+    line-height: 1.65 !important;
 }
 
 .page {
-    width: 980px;
-    margin: 45px auto;
+    width: 1100px !important;
+    max-width: 1100px !important;
+    margin: 50px auto !important;
 }
 
 .top-section {
     display: flex;
     align-items: flex-start;
-    gap: 40px;
+    gap: 50px !important;
 }
 
 .photo-box img {
-    width: 290px;
-    height: 360px;
+    width: 330px !important;
+    height: 410px !important;
     object-fit: cover;
     border: 1px solid #bfbfbf;
     padding: 5px;
@@ -29,52 +30,52 @@ body {
 
 .intro {
     flex: 1;
-    padding-top: 8px;
+    padding-top: 10px;
 }
 
 .intro h1 {
     margin: 0;
     color: #000080;
-    font-size: 40px;
+    font-size: 48px !important;
     font-weight: bold;
 }
 
 .intro hr {
     border: none;
     border-top: 1px solid #000080;
-    margin: 10px 0 20px;
+    margin: 12px 0 24px;
 }
 
 .intro p {
-    margin: 5px 0;
-    font-size: 17px;
+    margin: 6px 0;
+    font-size: 19px !important;
 }
 
 .email {
-    margin-top: 22px !important;
+    margin-top: 25px !important;
 }
 
 .main-line {
     border: none;
     border-top: 1px solid #bfbfbf;
-    margin: 55px 0;
+    margin: 60px 0;
 }
 
 section {
-    margin-bottom: 42px;
+    margin-bottom: 48px;
 }
 
 h2 {
     color: #000080;
-    font-size: 22px;
+    font-size: 26px !important;
     letter-spacing: 0.5px;
     border-bottom: 1px solid #cfcfcf;
-    padding-bottom: 6px;
-    margin-bottom: 18px;
+    padding-bottom: 8px;
+    margin-bottom: 22px;
 }
 
 p {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 }
 
 a {
@@ -98,33 +99,33 @@ a:hover {
 }
 
 footer {
-    margin-top: 80px;
+    margin-top: 90px;
     color: #777777;
-    font-size: 13px;
+    font-size: 15px !important;
 }
 
 /* COURSES PAGE */
 
 .page-title {
     color: #000080;
-    font-size: 36px;
+    font-size: 40px !important;
     border-bottom: 1px solid #000080;
     padding-bottom: 10px;
-    margin-bottom: 36px;
+    margin-bottom: 38px;
 }
 
 .back-link {
     margin-bottom: 30px;
-    font-size: 15px;
+    font-size: 16px !important;
 }
 
 .course-section {
-    margin-bottom: 40px;
+    margin-bottom: 42px;
 }
 
 .term-title {
     color: #000080;
-    font-size: 24px;
+    font-size: 26px !important;
     border-bottom: 1px solid #cfcfcf;
     padding-bottom: 7px;
     margin-top: 34px;
@@ -133,7 +134,7 @@ footer {
 
 .course-list {
     list-style-type: square;
-    padding-left: 24px;
+    padding-left: 26px;
     margin-bottom: 32px;
 }
 
@@ -160,7 +161,7 @@ footer {
 .name-page-title {
     text-align: center;
     color: #00008b;
-    font-size: 46px;
+    font-size: 46px !important;
     letter-spacing: 4px;
     margin: 0 0 30px;
 }
@@ -172,7 +173,7 @@ footer {
 }
 
 .name-page-text {
-    font-size: 24px;
+    font-size: 24px !important;
     line-height: 1.9;
     color: #222222;
     max-width: 980px;
@@ -198,32 +199,33 @@ footer {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1150px) {
     .page {
-        width: auto;
-        margin: 28px 22px;
+        width: auto !important;
+        max-width: none !important;
+        margin: 28px 24px !important;
     }
 
     .top-section {
         flex-direction: column;
-        gap: 26px;
+        gap: 28px !important;
     }
 
     .photo-box img {
-        width: 250px;
-        height: 310px;
+        width: 280px !important;
+        height: 350px !important;
     }
 
     .intro h1 {
-        font-size: 34px;
+        font-size: 38px !important;
     }
 
     body {
-        font-size: 16px;
+        font-size: 17px !important;
     }
 
     h2 {
-        font-size: 21px;
+        font-size: 24px !important;
     }
 }
 
@@ -234,12 +236,12 @@ footer {
     }
 
     .name-page-title {
-        font-size: 32px;
+        font-size: 32px !important;
         letter-spacing: 2px;
     }
 
     .name-page-text {
-        font-size: 19px;
+        font-size: 19px !important;
         line-height: 1.75;
     }
 }
