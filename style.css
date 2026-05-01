@@ -287,6 +287,12 @@ a:hover {
     gap: 14px;
 }
 
+.quantum-page-link {
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+    font-size: 17px !important;
+    letter-spacing: 0.2px;
+}
+
 /* FOOTER */
 
 footer {
@@ -399,126 +405,6 @@ footer {
     text-decoration: none;
 }
 
-/* RESPONSIVE */
-
-@media screen and (max-width: 1000px) {
-    .header-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .site-nav {
-        justify-content: flex-start;
-    }
-
-    .hero-section {
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
-
-    .hero-photo img {
-        width: 280px;
-        height: 350px;
-    }
-
-    .hero-content h1 {
-        font-size: 44px;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    body {
-        font-size: 17px;
-    }
-
-    .page {
-        padding: 0 18px;
-        margin-top: 24px;
-    }
-
-    .header-inner {
-        padding: 16px 20px;
-    }
-
-    .site-nav {
-        gap: 12px 16px;
-    }
-
-    .hero-section,
-    .content-section,
-    .course-section {
-        padding: 26px 22px;
-    }
-
-    .hero-photo img {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
-    }
-
-    .hero-content h1 {
-        font-size: 36px;
-    }
-
-    .affiliation {
-        font-size: 18px;
-    }
-
-    .content-section h2,
-    .term-title {
-        font-size: 22px;
-    }
-
-    .name-page-box {
-        padding: 42px 24px 38px;
-    }
-
-    .name-page-title {
-        font-size: 31px;
-        letter-spacing: 2px;
-    }
-
-    .name-page-text {
-        font-size: 19px;
-        line-height: 1.75;
-    }
-}
-
-/* QUANTUM EQUATION LINK */
-
-.quantum-equation-link {
-    display: inline-block;
-    margin-top: 26px;
-    color: var(--navy);
-    text-decoration: none;
-}
-
-.quantum-equation-link .equation {
-    display: inline-block;
-    padding: 10px 16px;
-    border: 1px solid var(--line);
-    background: #fbfbfa;
-    font-size: 22px;
-    letter-spacing: 0.3px;
-    transition: all 0.2s ease;
-}
-
-.quantum-equation-link:hover {
-    text-decoration: none;
-}
-
-.quantum-equation-link:hover .equation {
-    background: var(--soft-blue);
-    border-color: #c9dcef;
-    color: var(--blue-dark);
-    transform: translateY(-2px);
-}
-
 /* QUANTUM PAGE */
 
 .quantum-page {
@@ -612,33 +498,37 @@ footer {
     margin: 14px 0 0;
 }
 
-.future-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-}
+/* RESPONSIVE */
 
-.future-card {
-    background: #fbfbfa;
-    border: 1px solid var(--line);
-    padding: 24px;
-}
+@media screen and (max-width: 1000px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-.future-card h3 {
-    color: var(--blue-dark);
-    margin: 0 0 12px;
-    font-size: 22px;
-}
+    .site-nav {
+        justify-content: flex-start;
+    }
 
-.future-card p {
-    margin-bottom: 14px;
-}
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
 
-.future-card p:last-child {
-    margin-bottom: 0;
-}
+    .hero-photo img {
+        width: 280px;
+        height: 350px;
+    }
 
-@media screen and (max-width: 900px) {
+    .hero-content h1 {
+        font-size: 44px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
     .hamiltonian-card {
         grid-template-columns: 1fr;
     }
@@ -649,6 +539,62 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
+    body {
+        font-size: 17px;
+    }
+
+    .page {
+        padding: 0 18px;
+        margin-top: 24px;
+    }
+
+    .header-inner {
+        padding: 16px 20px;
+    }
+
+    .site-nav {
+        gap: 12px 16px;
+    }
+
+    .hero-section,
+    .content-section,
+    .course-section {
+        padding: 26px 22px;
+    }
+
+    .hero-photo img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .affiliation {
+        font-size: 18px;
+    }
+
+    .content-section h2,
+    .term-title {
+        font-size: 22px;
+    }
+
+    .name-page-box {
+        padding: 42px 24px 38px;
+    }
+
+    .name-page-title {
+        font-size: 31px;
+        letter-spacing: 2px;
+    }
+
+    .name-page-text {
+        font-size: 19px;
+        line-height: 1.75;
+    }
+
     .quantum-hero {
         padding: 28px 22px;
     }
