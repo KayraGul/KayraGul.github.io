@@ -41,7 +41,7 @@
         <section class="quantum-hero">
             <p class="eyebrow">Quantum Dynamics</p>
 
-            <h1>Kerr Nonlinearity and Wigner Function Evolution</h1>
+            <h1>Hamiltonians, States, and Quantum Evolution</h1>
 
             <div class="main-equation">
                 \[
@@ -52,13 +52,13 @@
             </div>
 
             <p>
-                This page presents a visualization of the Wigner function evolution of a coherent state
-                under Kerr nonlinearity. More Hamiltonians and animations can be added later as separate
-                sections.
+                This page presents selected quantum-mechanical systems through their Hamiltonians,
+                physical interpretations, and numerical animations. The current examples include
+                Kerr nonlinear phase-space evolution and one-dimensional quantum tunneling.
             </p>
         </section>
 
-        <section class="content-section">
+        <section class="content-section quantum-entry">
             <h2>Kerr Nonlinearity</h2>
 
             <div class="hamiltonian-card">
@@ -88,16 +88,16 @@
                             =
                             \hat{n}(\hat{n}-1),
                         \]
-                        the nonlinear part gives a photon-number-dependent phase evolution. This means
-                        that different number-state components of the initial state evolve with different
-                        phases.
+                        the nonlinear part gives a photon-number-dependent phase evolution. Therefore,
+                        different photon-number components of the initial state acquire different phases
+                        during time evolution.
                     </p>
 
                     <h3>Initial Coherent State</h3>
 
                     <p>
                         The initial state used in the animation is a coherent state. In the photon number
-                        basis, it can be written as
+                        basis, the coherent state is represented as
                     </p>
 
                     <div class="hamiltonian-equation">
@@ -112,9 +112,9 @@
                     </div>
 
                     <p>
-                        In the simulation, the coherent state is created using \(\alpha=\sqrt{\bar{n}}\),
-                        where \(\bar{n}=5\). Therefore, \(\alpha=\sqrt{5}\), and the state has an average
-                        photon number of 5.
+                        In this simulation, the coherent-state parameter is chosen as
+                        \(\alpha=\sqrt{\bar{n}}\), where \(\bar{n}=5\). Therefore,
+                        \(\alpha=\sqrt{5}\), and the average photon number of the initial state is 5.
                     </p>
 
                     <h3>Physical Interpretation</h3>
@@ -122,8 +122,8 @@
                     <p>
                         A coherent state initially has a Gaussian-like Wigner function in phase space.
                         Under Kerr evolution, the nonlinear photon-number-dependent phases distort this
-                        distribution. As time progresses, the state develops interference structures and
-                        nonclassical phase-space features.
+                        phase-space distribution. As time progresses, the Wigner function develops
+                        interference structures and nonclassical features.
                     </p>
 
                     <div class="term-list">
@@ -140,6 +140,92 @@
                     <img src="assets/wigner_easter_egg.gif" alt="Wigner function evolution under Kerr nonlinearity">
                     <p>
                         Wigner function evolution of a coherent state under Kerr nonlinearity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section quantum-entry">
+            <h2>Quantum Tunneling</h2>
+
+            <div class="hamiltonian-card">
+                <div class="hamiltonian-text">
+                    <h3>One-Dimensional Barrier Hamiltonian</h3>
+
+                    <div class="hamiltonian-equation">
+                        \[
+                            \hat{H}
+                            =
+                            -\frac{\hbar^2}{2m}
+                            \frac{\partial^2}{\partial x^2}
+                            +
+                            V(x)
+                        \]
+                    </div>
+
+                    <p>
+                        This Hamiltonian describes a particle moving in one dimension under the influence
+                        of a spatially dependent potential barrier. In the simulation, the potential is a
+                        rectangular barrier centered at the origin.
+                    </p>
+
+                    <div class="hamiltonian-equation">
+                        \[
+                            V(x)
+                            =
+                            \begin{cases}
+                            V_0, & -1 \leq x \leq 1, \\
+                            0, & \text{otherwise}.
+                            \end{cases}
+                        \]
+                    </div>
+
+                    <h3>Initial Wave Packet</h3>
+
+                    <p>
+                        The initial state is a Gaussian wave packet moving toward the barrier from the left.
+                        It can be written in the form
+                    </p>
+
+                    <div class="hamiltonian-equation">
+                        \[
+                            \psi(x,0)
+                            =
+                            \left(\frac{1}{\pi\sigma^2}\right)^{1/4}
+                            \exp\left[-\frac{(x-x_0)^2}{2\sigma^2}\right]
+                            \exp(ik_0x).
+                        \]
+                    </div>
+
+                    <p>
+                        The kinetic energy of the packet is chosen below the barrier height,
+                        \(E = 0.95V_0\). Classically, a particle with energy lower than the barrier height
+                        would be reflected. Quantum mechanically, part of the wave packet can still pass
+                        through the barrier.
+                    </p>
+
+                    <h3>Physical Interpretation</h3>
+
+                    <p>
+                        The animation shows the probability density \(|\psi(x,t)|^2\) as the wave packet
+                        approaches the barrier, partially reflects, and partially transmits. The transmitted
+                        part represents quantum tunneling, which has no direct classical analogue.
+                    </p>
+
+                    <div class="term-list">
+                        <p><strong>\(V_0\):</strong> barrier height</p>
+                        <p><strong>\(E\):</strong> initial wave-packet energy</p>
+                        <p><strong>\(\sigma\):</strong> spatial width of the Gaussian packet</p>
+                        <p><strong>\(x_0\):</strong> initial packet center</p>
+                        <p><strong>\(k_0\):</strong> central wave number</p>
+                        <p><strong>\(|\psi(x,t)|^2\):</strong> probability density</p>
+                    </div>
+                </div>
+
+                <div class="hamiltonian-animation">
+                    <img src="assets/tunneling.gif" alt="Quantum tunneling animation through a rectangular potential barrier">
+                    <p>
+                        Time evolution of a Gaussian wave packet tunneling through a rectangular potential barrier.
                     </p>
                 </div>
             </div>
