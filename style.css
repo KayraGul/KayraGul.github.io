@@ -488,3 +488,33 @@ footer {
         line-height: 1.75;
     }
 }
+
+/* QUANTUM EQUATION LINK */
+
+.quantum-equation-link {
+    display: inline-block;
+    margin-top: 26px;
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.quantum-equation-link .equation {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid var(--line);
+    background: #fbfbfa;
+    font-size: 22px;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.quantum-equation-link:hover {
+    text-decoration: none;
+}
+
+.quantum-equation-link:hover .equation {
+    background: var(--soft-blue);
+    border-color: #c9dcef;
+    color: var(--blue-dark);
+    transform: translateY(-2px);
+}
