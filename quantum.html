@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Dynamics | Yusuf Kayra Gül</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="site-name">
+                <a href="index.html">Yusuf Kayra Gül</a>
+            </div>
+
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#projects">Research</a>
+                <a href="courses.html">Courses</a>
+                <a href="assets/cv.pdf" target="_blank">CV</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page quantum-page">
+
+        <section class="quantum-hero">
+            <p class="eyebrow">Quantum Dynamics</p>
+
+            <h1>Hamiltonians, States, and Phase-Space Evolution</h1>
+
+            <div class="main-equation">
+                \[
+                    i\hbar \frac{\partial}{\partial t}|\psi(t)\rangle
+                    =
+                    \hat{H}|\psi(t)\rangle
+                \]
+            </div>
+
+            <p>
+                This page collects selected Hamiltonians used to model quantum systems and visualizes
+                their dynamical effects on quantum states. The first example shows the Wigner function
+                evolution of a coherent state under Kerr nonlinearity.
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2>Kerr Nonlinearity</h2>
+
+            <div class="hamiltonian-card">
+                <div class="hamiltonian-text">
+                    <h3>Kerr Hamiltonian</h3>
+
+                    <div class="hamiltonian-equation">
+                        \[
+                            \hat{H}
+                            =
+                            \omega\left(\hat{n}+\frac{1}{2}\right)
+                            +
+                            \chi \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}\hat{a}
+                        \]
+                    </div>
+
+                    <p>
+                        The Kerr Hamiltonian describes a nonlinear optical medium in which the phase
+                        evolution of the field depends on the photon number. Unlike the ordinary harmonic
+                        oscillator, the Kerr term introduces a photon-number-dependent energy shift.
+                    </p>
+
+                    <p>
+                        Starting from a coherent state, this nonlinear evolution distorts the initially
+                        Gaussian-like phase-space distribution. In the Wigner representation, this produces
+                        interference structures and nonclassical features as the state evolves.
+                    </p>
+
+                    <div class="term-list">
+                        <p><strong>\(\omega\):</strong> oscillator frequency</p>
+                        <p><strong>\(\chi\):</strong> Kerr nonlinear coupling strength</p>
+                        <p><strong>\(\hat{a}, \hat{a}^{\dagger}\):</strong> annihilation and creation operators</p>
+                        <p><strong>\(\hat{n} = \hat{a}^{\dagger}\hat{a}\):</strong> photon number operator</p>
+                    </div>
+                </div>
+
+                <div class="hamiltonian-animation">
+                    <img src="assets/wigner_easter_egg.gif" alt="Wigner function evolution under Kerr nonlinearity">
+                    <p>
+                        Wigner function evolution of a coherent state under Kerr nonlinearity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>More Hamiltonians</h2>
+
+            <div class="future-grid">
+
+                <div class="future-card">
+                    <h3>Quantum Harmonic Oscillator</h3>
+                    <p>
+                        \[
+                            \hat{H}
+                            =
+                            \hbar\omega
+                            \left(
+                            \hat{a}^{\dagger}\hat{a}
+                            +
+                            \frac{1}{2}
+                            \right)
+                        \]
+                    </p>
+                    <p>
+                        The basic model for quantized oscillations, field modes, and many foundational
+                        problems in quantum mechanics.
+                    </p>
+                </div>
+
+                <div class="future-card">
+                    <h3>Driven Two-Level System</h3>
+                    <p>
+                        \[
+                            \hat{H}
+                            =
+                            \frac{\hbar\omega_0}{2}\sigma_z
+                            +
+                            \hbar\Omega\cos(\omega t)\sigma_x
+                        \]
+                    </p>
+                    <p>
+                        A useful model for light-matter interaction, Rabi oscillations, and qubit dynamics.
+                    </p>
+                </div>
+
+                <div class="future-card">
+                    <h3>Jaynes-Cummings Model</h3>
+                    <p>
+                        \[
+                            \hat{H}
+                            =
+                            \hbar\omega_c\hat{a}^{\dagger}\hat{a}
+                            +
+                            \frac{\hbar\omega_q}{2}\sigma_z
+                            +
+                            \hbar g
+                            \left(
+                            \hat{a}^{\dagger}\sigma_-
+                            +
+                            \hat{a}\sigma_+
+                            \right)
+                        \]
+                    </p>
+                    <p>
+                        A central Hamiltonian for cavity quantum electrodynamics and quantum optics.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p><a href="index.html">Return to main page</a></p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
