@@ -518,3 +518,147 @@ footer {
     color: var(--blue-dark);
     transform: translateY(-2px);
 }
+
+/* QUANTUM PAGE */
+
+.quantum-page {
+    max-width: 1180px;
+}
+
+.quantum-hero {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 46px;
+    margin-bottom: 28px;
+    box-shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
+}
+
+.quantum-hero h1 {
+    color: var(--navy);
+    font-size: 43px;
+    line-height: 1.2;
+    margin: 0 0 24px;
+}
+
+.quantum-hero p {
+    max-width: 850px;
+    margin-bottom: 0;
+}
+
+.main-equation {
+    background: #fbfbfa;
+    border: 1px solid var(--line);
+    padding: 22px;
+    margin: 24px 0;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.hamiltonian-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 36px;
+    align-items: start;
+}
+
+.hamiltonian-text h3 {
+    color: var(--blue-dark);
+    margin: 0 0 16px;
+    font-size: 24px;
+}
+
+.hamiltonian-equation {
+    background: #fbfbfa;
+    border: 1px solid var(--line);
+    padding: 18px;
+    margin-bottom: 22px;
+    overflow-x: auto;
+}
+
+.term-list {
+    margin-top: 24px;
+    padding: 18px 20px;
+    background: var(--soft-blue);
+    border: 1px solid #c9dcef;
+}
+
+.term-list p {
+    margin: 0 0 8px;
+}
+
+.term-list p:last-child {
+    margin-bottom: 0;
+}
+
+.hamiltonian-animation {
+    background: #fbfbfa;
+    border: 1px solid var(--line);
+    padding: 18px;
+    text-align: center;
+}
+
+.hamiltonian-animation img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--line);
+    background: #ffffff;
+}
+
+.hamiltonian-animation p {
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 14px 0 0;
+}
+
+.future-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.future-card {
+    background: #fbfbfa;
+    border: 1px solid var(--line);
+    padding: 24px;
+}
+
+.future-card h3 {
+    color: var(--blue-dark);
+    margin: 0 0 12px;
+    font-size: 22px;
+}
+
+.future-card p {
+    margin-bottom: 14px;
+}
+
+.future-card p:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .hamiltonian-card {
+        grid-template-columns: 1fr;
+    }
+
+    .quantum-hero h1 {
+        font-size: 34px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .quantum-hero {
+        padding: 28px 22px;
+    }
+
+    .quantum-hero h1 {
+        font-size: 29px;
+    }
+
+    .main-equation,
+    .hamiltonian-equation {
+        padding: 14px;
+    }
+}
