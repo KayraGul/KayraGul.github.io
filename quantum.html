@@ -41,7 +41,7 @@
         <section class="quantum-hero">
             <p class="eyebrow">Quantum Dynamics</p>
 
-            <h1>Hamiltonians, States, and Phase-Space Evolution</h1>
+            <h1>Kerr Nonlinearity and Wigner Function Evolution</h1>
 
             <div class="main-equation">
                 \[
@@ -52,9 +52,9 @@
             </div>
 
             <p>
-                This page collects selected Hamiltonians used to model quantum systems and visualizes
-                their dynamical effects on quantum states. The first example shows the Wigner function
-                evolution of a coherent state under Kerr nonlinearity.
+                This page presents a visualization of the Wigner function evolution of a coherent state
+                under Kerr nonlinearity. More Hamiltonians and animations can be added later as separate
+                sections.
             </p>
         </section>
 
@@ -76,15 +76,54 @@
                     </div>
 
                     <p>
-                        The Kerr Hamiltonian describes a nonlinear optical medium in which the phase
-                        evolution of the field depends on the photon number. Unlike the ordinary harmonic
-                        oscillator, the Kerr term introduces a photon-number-dependent energy shift.
+                        The Kerr Hamiltonian describes a nonlinear optical system where the energy shift
+                        depends on the photon number. The first term corresponds to the ordinary harmonic
+                        oscillator contribution, while the second term introduces the nonlinear Kerr interaction.
                     </p>
 
                     <p>
-                        Starting from a coherent state, this nonlinear evolution distorts the initially
-                        Gaussian-like phase-space distribution. In the Wigner representation, this produces
-                        interference structures and nonclassical features as the state evolves.
+                        Since
+                        \[
+                            \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}\hat{a}
+                            =
+                            \hat{n}(\hat{n}-1),
+                        \]
+                        the nonlinear part gives a photon-number-dependent phase evolution. This means
+                        that different number-state components of the initial state evolve with different
+                        phases.
+                    </p>
+
+                    <h3>Initial Coherent State</h3>
+
+                    <p>
+                        The initial state used in the animation is a coherent state. In the photon number
+                        basis, it can be written as
+                    </p>
+
+                    <div class="hamiltonian-equation">
+                        \[
+                            |\alpha\rangle
+                            =
+                            e^{-|\alpha|^2/2}
+                            \sum_{n=0}^{\infty}
+                            \frac{\alpha^n}{\sqrt{n!}}
+                            |n\rangle .
+                        \]
+                    </div>
+
+                    <p>
+                        In the simulation, the coherent state is created using \(\alpha=\sqrt{\bar{n}}\),
+                        where \(\bar{n}=5\). Therefore, \(\alpha=\sqrt{5}\), and the state has an average
+                        photon number of 5.
+                    </p>
+
+                    <h3>Physical Interpretation</h3>
+
+                    <p>
+                        A coherent state initially has a Gaussian-like Wigner function in phase space.
+                        Under Kerr evolution, the nonlinear photon-number-dependent phases distort this
+                        distribution. As time progresses, the state develops interference structures and
+                        nonclassical phase-space features.
                     </p>
 
                     <div class="term-list">
@@ -92,6 +131,8 @@
                         <p><strong>\(\chi\):</strong> Kerr nonlinear coupling strength</p>
                         <p><strong>\(\hat{a}, \hat{a}^{\dagger}\):</strong> annihilation and creation operators</p>
                         <p><strong>\(\hat{n} = \hat{a}^{\dagger}\hat{a}\):</strong> photon number operator</p>
+                        <p><strong>\(|\alpha\rangle\):</strong> coherent state</p>
+                        <p><strong>\(|n\rangle\):</strong> photon number state</p>
                     </div>
                 </div>
 
@@ -101,73 +142,6 @@
                         Wigner function evolution of a coherent state under Kerr nonlinearity.
                     </p>
                 </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>More Hamiltonians</h2>
-
-            <div class="future-grid">
-
-                <div class="future-card">
-                    <h3>Quantum Harmonic Oscillator</h3>
-                    <p>
-                        \[
-                            \hat{H}
-                            =
-                            \hbar\omega
-                            \left(
-                            \hat{a}^{\dagger}\hat{a}
-                            +
-                            \frac{1}{2}
-                            \right)
-                        \]
-                    </p>
-                    <p>
-                        The basic model for quantized oscillations, field modes, and many foundational
-                        problems in quantum mechanics.
-                    </p>
-                </div>
-
-                <div class="future-card">
-                    <h3>Driven Two-Level System</h3>
-                    <p>
-                        \[
-                            \hat{H}
-                            =
-                            \frac{\hbar\omega_0}{2}\sigma_z
-                            +
-                            \hbar\Omega\cos(\omega t)\sigma_x
-                        \]
-                    </p>
-                    <p>
-                        A useful model for light-matter interaction, Rabi oscillations, and qubit dynamics.
-                    </p>
-                </div>
-
-                <div class="future-card">
-                    <h3>Jaynes-Cummings Model</h3>
-                    <p>
-                        \[
-                            \hat{H}
-                            =
-                            \hbar\omega_c\hat{a}^{\dagger}\hat{a}
-                            +
-                            \frac{\hbar\omega_q}{2}\sigma_z
-                            +
-                            \hbar g
-                            \left(
-                            \hat{a}^{\dagger}\sigma_-
-                            +
-                            \hat{a}\sigma_+
-                            \right)
-                        \]
-                    </p>
-                    <p>
-                        A central Hamiltonian for cavity quantum electrodynamics and quantum optics.
-                    </p>
-                </div>
-
             </div>
         </section>
 
