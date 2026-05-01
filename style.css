@@ -431,6 +431,10 @@ footer {
     margin-bottom: 0;
 }
 
+.quantum-entry {
+    margin-bottom: 28px;
+}
+
 .main-equation {
     background: #fbfbfa;
     border: 1px solid var(--line);
@@ -488,6 +492,7 @@ footer {
     display: block;
     border: 1px solid var(--line);
     background: #ffffff;
+    object-fit: contain;
 }
 
 .hamiltonian-animation p {
