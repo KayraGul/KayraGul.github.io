@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quantum Teleportation State Explorer — Browser Demo</title>
+<style>
+:root{
+  --bg:#07111f; --bg2:#0b1220; --card:#111c33; --card2:#152443; --plot:#0f172a;
+  --text:#f8fafc; --muted:#cbd5e1; --subtle:#94a3b8; --accent:#38bdf8; --accent2:#2563eb;
+  --border:#243656; --ok:#34d399; --warn:#fbbf24; --bad:#fb7185; --shadow:rgba(0,0,0,.32);
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top left,#10213d 0,#07111f 42%,#050b14 100%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;}
+button,input,select{font:inherit}
+.app{min-height:100vh;display:flex;flex-direction:column}.topbar{display:flex;gap:14px;align-items:center;padding:14px 22px;border-bottom:1px solid var(--border);background:rgba(7,17,31,.92);backdrop-filter:blur(10px);position:sticky;top:0;z-index:5}.brand{font-weight:800;letter-spacing:.2px}.badge{font-size:12px;color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:4px 9px;background:var(--plot)}.nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}.tabbtn{border:1px solid var(--border);background:var(--card);color:var(--muted);padding:9px 12px;border-radius:10px;cursor:pointer}.tabbtn.active,.tabbtn:hover{background:var(--accent2);color:#fff;border-color:#3b82f6}.page{display:none;padding:24px;max-width:1500px;width:100%;margin:0 auto}.page.active{display:block}.hero{padding:42px 12px 26px}.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.02;margin:0 0 14px}.hero p{font-size:18px;color:var(--muted);max-width:1040px;line-height:1.55}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:linear-gradient(180deg,var(--card),#0e1a30);border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 40px var(--shadow);padding:18px}.card h2,.card h3{margin:0 0 12px;color:var(--accent)}.card p,.small{color:var(--muted);line-height:1.45}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}@media(max-width:980px){.span4,.span5,.span6,.span7,.span8{grid-column:span 12}.topbar{align-items:flex-start;flex-direction:column}.nav{margin-left:0}}
+.formgrid{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:12px}@media(max-width:980px){.formgrid{grid-template-columns:repeat(2,minmax(120px,1fr))}}@media(max-width:560px){.formgrid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:13px;color:var(--subtle)}input,select{width:100%;background:var(--plot);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 11px;outline:none}input:focus,select:focus{border-color:var(--accent)}input[type="checkbox"]{width:auto;accent-color:var(--accent2)}.checks{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:10px}.check{display:flex;align-items:center;gap:8px;color:var(--muted);background:rgba(15,23,42,.52);border:1px solid var(--border);border-radius:10px;padding:10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.primary{background:linear-gradient(135deg,#2563eb,#38bdf8);border:0;color:#fff;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}.secondary{background:var(--card2);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}.primary:disabled,.secondary:disabled{opacity:.45;cursor:not-allowed}.status{min-height:40px;color:var(--muted);background:rgba(15,23,42,.7);border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:12px;white-space:pre-wrap}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}@media(max-width:900px){.metrics{grid-template-columns:repeat(2,1fr)}}.metric{background:var(--plot);border:1px solid var(--border);border-radius:14px;padding:12px}.metric .k{font-size:12px;color:var(--subtle)}.metric .v{font-size:22px;font-weight:800;margin-top:4px}.canvasWrap{background:var(--plot);border:1px solid var(--border);border-radius:14px;padding:10px;overflow:hidden}.canvasWrap h4{margin:0 0 8px;color:var(--muted)}canvas{width:100%;height:auto;display:block;border-radius:10px;background:#08101f}.tableWrap{overflow:auto;border:1px solid var(--border);border-radius:14px}table{width:100%;border-collapse:collapse;background:var(--plot)}th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;font-size:13px;white-space:nowrap}th{color:var(--accent);background:#0b172c;position:sticky;top:0}td{color:var(--muted)}.code{font-family:Consolas,ui-monospace,monospace;background:var(--plot);border:1px solid var(--border);border-radius:12px;padding:12px;color:var(--muted);overflow:auto}.warn{color:var(--warn)}.ok{color:var(--ok)}.bad{color:var(--bad)}.pillrow{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid var(--border);background:var(--plot);border-radius:999px;padding:6px 10px;color:var(--muted);font-size:12px}.footer{padding:24px;color:var(--subtle);text-align:center}.modeChoice{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}.modeCard{flex:1;min-width:260px;padding:18px;border-radius:18px;border:1px solid var(--border);background:var(--card);cursor:pointer}.modeCard:hover,.modeCard.selected{border-color:var(--accent);box-shadow:0 0 0 2px rgba(56,189,248,.18)}.twoModeNote{opacity:.72}.progressOuter{height:9px;background:#0b172c;border-radius:999px;overflow:hidden;border:1px solid var(--border);margin-top:10px}.progressInner{height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#38bdf8)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand">Quantum Teleportation State Explorer</div>
+    <div class="badge">Standalone browser demo</div>
+    <div class="nav">
+      <button class="tabbtn active" data-page="welcome">Welcome</button>
+      <button class="tabbtn" data-page="setup">Setup / Optimize</button>
+      <button class="tabbtn" data-page="results">Results</button>
+      <button class="tabbtn" data-page="comparison">Comparison</button>
+      <button class="tabbtn" data-page="about">About</button>
+    </div>
+  </div>
+
+  <section id="welcome" class="page active">
+    <div class="hero">
+      <h1>Browser demo for constrained CV teleportation state optimization</h1>
+      <p>This HTML version removes Tkinter, file saving, desktop windows, and Python dependencies. It runs directly in the browser using JavaScript, Canvas plots, a simplified Fock-basis Wigner engine, and a lightweight random/local optimizer for website demonstrations.</p>
+      <div class="modeChoice">
+        <div class="modeCard selected" id="singleModeCard"><h3>Single-mode teleportation</h3><p>Optimize one Fock-basis state and compare it with coherent, squeezed, Fock, and cat references.</p></div>
+        <div class="modeCard twoModeNote" id="twoModeCard"><h3>Two-mode teleportation</h3><p>Placeholder for future browser extension. The full two-mode optimizer is computationally heavier and is not enabled in this lightweight demo.</p></div>
+      </div>
+      <div class="actions"><button class="primary" onclick="showPage('setup')">Open Setup</button><button class="secondary" onclick="loadPreset('balanced');showPage('setup')">Load balanced demo preset</button></div>
+    </div>
+    <div class="grid">
+      <div class="card span4"><h3>1. Configure</h3><p>Set cutoff, energy, squeezing, gain, detector efficiency, thermal noise, phase diffusion, and optimizer limits.</p></div>
+      <div class="card span4"><h3>2. Optimize</h3><p>The demo searches over complex Fock coefficients c<sub>n</sub> while preserving normalization and target mean photon number.</p></div>
+      <div class="card span4"><h3>3. Compare</h3><p>Run in-browser comparison plots. No files are saved and no external Python backend is required.</p></div>
+    </div>
+  </section>
+
+  <section id="setup" class="page">
+    <div class="grid">
+      <div class="card span12"><h2>Setup / Optimize</h2><p class="small">For a website demo, keep Ncut ≤ 12 and grid points ≤ 65 for smooth browser performance.</p></div>
+      <div class="card span12">
+        <h3>Numerical settings</h3>
+        <div class="formgrid">
+          <div class="field"><label>Ncut</label><input id="Ncut" type="number" min="3" max="18" value="9"></div>
+          <div class="field"><label>Target mean photon number N</label><input id="targetEnergy" type="number" step="0.1" min="0" value="1.0"></div>
+          <div class="field"><label>Phase-space x/p max</label><input id="xMax" type="number" step="0.5" min="3" value="5.5"></div>
+          <div class="field"><label>Grid points</label><input id="gridPoints" type="number" min="31" max="101" step="2" value="55"></div>
+          <div class="field"><label>Starts</label><input id="starts" type="number" min="1" max="20" value="4"></div>
+          <div class="field"><label>Iterations per start</label><input id="iterations" type="number" min="10" max="400" value="70"></div>
+          <div class="field"><label>Mutation step</label><input id="mutationStep" type="number" step="0.01" min="0.01" value="0.18"></div>
+          <div class="field"><label>Random seed</label><input id="seed" type="number" value="1234"></div>
+        </div>
+      </div>
+
+      <div class="card span12">
+        <h3>Teleportation channel</h3>
+        <div class="formgrid">
+          <div class="field"><label>Squeezing r</label><input id="r" type="number" step="0.05" value="0.9"></div>
+          <div class="field"><label>Gain g</label><input id="gain" type="number" step="0.05" value="1.0"></div>
+          <div class="field"><label>Detector efficiency η</label><input id="eta" type="number" step="0.01" min="0.05" max="1" value="0.9"></div>
+          <div class="field"><label>Detector noise strength</label><input id="detStrength" type="number" step="0.01" min="0" value="0.04"></div>
+          <div class="field"><label>Thermal nbar</label><input id="thermalN" type="number" step="0.01" min="0" value="0.05"></div>
+          <div class="field"><label>Thermal noise strength</label><input id="thermalStrength" type="number" step="0.01" min="0" value="0.02"></div>
+          <div class="field"><label>Extra x noise</label><input id="extraX" type="number" step="0.01" min="0" value="0.00"></div>
+          <div class="field"><label>Extra p noise</label><input id="extraP" type="number" step="0.01" min="0" value="0.00"></div>
+          <div class="field"><label>Phase diffusion σ</label><input id="phaseSigma" type="number" step="0.02" min="0" value="0.00"></div>
+          <div class="field"><label>Objective</label><select id="objective"><option value="fidelity">Maximize fidelity</option><option value="negativity">Fidelity + negativity survival</option></select></div>
+          <div class="field"><label>Negativity weight</label><input id="negWeight" type="number" step="0.05" min="0" max="1" value="0.35"></div>
+          <div class="field"><label>Tail penalty</label><input id="tailPenalty" type="number" step="0.01" min="0" value="0.02"></div>
+        </div>
+        <div class="checks" style="margin-top:12px">
+          <label class="check"><input id="finiteNoise" type="checkbox" checked> Finite-squeezing noise</label>
+          <label class="check"><input id="useDetector" type="checkbox" checked> Detector inefficiency</label>
+          <label class="check"><input id="useThermal" type="checkbox"> Thermal noise</label>
+          <label class="check"><input id="realOnly" type="checkbox"> Real coefficients only</label>
+          <label class="check"><input id="evenOnly" type="checkbox"> Even parity only</label>
+          <label class="check"><input id="oddOnly" type="checkbox"> Odd parity only</label>
+        </div>
+        <div class="actions">
+          <button class="secondary" onclick="loadPreset('fast')">Fast preset</button>
+          <button class="secondary" onclick="loadPreset('balanced')">Balanced preset</button>
+          <button class="secondary" onclick="loadPreset('visual')">Visual preset</button>
+          <button class="primary" id="startBtn" onclick="startOptimization()">Start optimization</button>
+          <button class="secondary" id="stopBtn" onclick="stopOptimization()" disabled>Stop</button>
+        </div>
+        <div class="progressOuter"><div class="progressInner" id="progressBar"></div></div>
+        <div class="status" id="statusBox">Ready. This demo runs entirely in your browser. No plots or files will be saved.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="page">
+    <div class="grid">
+      <div class="card span12"><h2>Optimization Results</h2><div class="metrics" id="metricCards"></div></div>
+      <div class="card span6"><div class="canvasWrap"><h4>Input Wigner function</h4><canvas id="winCanvas" width="520" height="520"></canvas></div></div>
+      <div class="card span6"><div class="canvasWrap"><h4>Teleported output Wigner function</h4><canvas id="woutCanvas" width="520" height="520"></canvas></div></div>
+      <div class="card span6"><div class="canvasWrap"><h4>Photon-number distribution</h4><canvas id="photonCanvas" width="640" height="360"></canvas></div></div>
+      <div class="card span6"><div class="canvasWrap"><h4>Optimization history</h4><canvas id="historyCanvas" width="640" height="360"></canvas></div></div>
+      <div class="card span12"><h3>Optimized state</h3><div class="code" id="stateFormula">Run optimization first.</div></div>
+    </div>
+  </section>
+
+  <section id="comparison" class="page">
+    <div class="grid">
+      <div class="card span12"><h2>Comparison & Validation Tests</h2><p class="small">Runs reference-state tests and sweep plots inside the app. Save/export buttons are intentionally removed for website deployment.</p><div class="actions"><button class="primary" id="compareBtn" onclick="runComparison()" disabled>Run comparison</button></div><div class="status" id="comparisonStatus">Run an optimization first.</div></div>
+      <div class="card span12"><h3>State metrics</h3><div class="tableWrap"><table id="comparisonTable"><thead><tr><th>State</th><th>Fidelity</th><th>Energy</th><th>Neg in</th><th>Neg out</th><th>Survival</th><th>Overlap</th></tr></thead><tbody></tbody></table></div></div>
+      <div class="card span6"><div class="canvasWrap"><h4>Comparison fidelities</h4><canvas id="compareBarCanvas" width="640" height="360"></canvas></div></div>
+      <div class="card span6"><div class="canvasWrap"><h4>Fidelity vs squeezing r</h4><canvas id="sweepCanvas" width="640" height="360"></canvas></div></div>
+    </div>
+  </section>
+
+  <section id="about" class="page">
+    <div class="grid">
+      <div class="card span12"><h2>About this browser version</h2><p>This is a standalone HTML/JavaScript demo designed for embedding in a website. It is not a full replacement for the Python/QuTiP desktop research version. The Python version uses QuTiP, SciPy optimization, Tkinter, Matplotlib TkAgg, threaded workers, and export folders. This browser version keeps the core educational idea: optimize Fock coefficients, apply a noisy Wigner-space teleportation channel, and compare with reference states.</p></div>
+      <div class="card span6"><h3>What was removed</h3><div class="pillrow"><span class="pill">Tkinter</span><span class="pill">FigureCanvasTkAgg</span><span class="pill">File saving</span><span class="pill">Open folder buttons</span><span class="pill">Python backend</span><span class="pill">QuTiP dependency</span></div></div>
+      <div class="card span6"><h3>What remains</h3><div class="pillrow"><span class="pill">Single-mode Fock states</span><span class="pill">Wigner plots</span><span class="pill">Fidelity</span><span class="pill">Negativity</span><span class="pill">Random/local optimizer</span><span class="pill">Comparison sweeps</span></div></div>
+      <div class="card span12"><h3>Embedding tip</h3><p class="small">Upload this single HTML file to your website and link it as a demo page, or copy the body content into a page section. For heavy research runs, keep using the Python desktop app or a proper backend server.</p></div>
+    </div>
+  </section>
+  <div class="footer">Quantum Teleportation State Explorer & Optimizer — website demo</div>
+</div>
+
+<script>
+'use strict';
+const SQRT2=Math.sqrt(2), PI=Math.PI;
+let appState={best:null, grid:null, stop:false, rng:null, comparison:null};
+function $(id){return document.getElementById(id)}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.tabbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===id));}
+document.querySelectorAll('.tabbtn').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+$('singleModeCard').onclick=()=>{$('singleModeCard').classList.add('selected');$('twoModeCard').classList.remove('selected')};
+$('twoModeCard').onclick=()=>{setStatus('Two-mode browser mode is planned, but this lightweight HTML demo currently enables single-mode teleportation only.');};
+function setStatus(msg){$('statusBox').textContent=msg} function setCompStatus(msg){$('comparisonStatus').textContent=msg}
+function num(id){return parseFloat($(id).value)} function intv(id){return parseInt($(id).value,10)} function chk(id){return $(id).checked}
+function cfg(){let N=intv('Ncut'); if(N<3)N=3; if(N>18)N=18; let gp=intv('gridPoints'); if(gp%2===0)gp++; return {Ncut:N,targetEnergy:num('targetEnergy'),xMax:num('xMax'),gridPoints:gp,starts:intv('starts'),iterations:intv('iterations'),mutationStep:num('mutationStep'),seed:intv('seed'),r:num('r'),gain:num('gain'),eta:num('eta'),detStrength:num('detStrength'),thermalN:num('thermalN'),thermalStrength:num('thermalStrength'),extraX:num('extraX'),extraP:num('extraP'),phaseSigma:num('phaseSigma'),objective:$('objective').value,negWeight:num('negWeight'),tailPenalty:num('tailPenalty'),finiteNoise:chk('finiteNoise'),useDetector:chk('useDetector'),useThermal:chk('useThermal'),realOnly:chk('realOnly'),evenOnly:chk('evenOnly'),oddOnly:chk('oddOnly')};}
+function loadPreset(name){if(name==='fast'){setVals({Ncut:7,gridPoints:41,starts:2,iterations:35,xMax:5,mutationStep:.22});}
+ if(name==='balanced'){setVals({Ncut:9,gridPoints:55,starts:4,iterations:70,xMax:5.5,mutationStep:.18,r:.9,gain:1,eta:.9,phaseSigma:0});$('finiteNoise').checked=true;$('useDetector').checked=true;$('useThermal').checked=false;}
+ if(name==='visual'){setVals({Ncut:10,gridPoints:65,starts:5,iterations:95,xMax:6,mutationStep:.14,r:.75,gain:1,eta:.82,phaseSigma:.08,thermalN:.05,thermalStrength:.02});$('finiteNoise').checked=true;$('useDetector').checked=true;$('useThermal').checked=true;}}
+function setVals(o){for(const k in o){if($(k)!==null)$(k).value=o[k];}}
+class RNG{constructor(seed){this.s=seed>>>0||1} next(){this.s=(1664525*this.s+1013904223)>>>0;return this.s/4294967296} normal(){let u=Math.max(this.next(),1e-12),v=this.next();return Math.sqrt(-2*Math.log(u))*Math.cos(2*PI*v)}}
+function factorials(N){let f=[1];for(let i=1;i<N;i++)f[i]=f[i-1]*i;return f}
+function normalize(c){let s=0;for(const z of c)s+=z.re*z.re+z.im*z.im;if(s<1e-20){return c.map((_,i)=>({re:i?0:1,im:0}))}let a=1/Math.sqrt(s);return c.map(z=>({re:z.re*a,im:z.im*a}))}
+function energy(c){let e=0;for(let n=0;n<c.length;n++)e+=n*(c[n].re*c[n].re+c[n].im*c[n].im);return e}
+function parityProject(c,C){let out=c.map((z,n)=>{if(C.evenOnly&&n%2===1)return{re:0,im:0};if(C.oddOnly&&n%2===0)return{re:0,im:0};return{re:z.re,im:C.realOnly?0:z.im};});return out}
+function projectEnergy(c,target,C){c=normalize(parityProject(c,C));let N=c.length, eps=1e-10, p=[], phase=[];for(let n=0;n<N;n++){let mag=Math.hypot(c[n].re,c[n].im);p[n]=mag*mag+eps;phase[n]=mag>1e-14?Math.atan2(c[n].im,c[n].re):0}let allowed=[];for(let n=0;n<N;n++){if(C.evenOnly&&n%2===1)continue;if(C.oddOnly&&n%2===0)continue;allowed.push(n)}let minA=Math.min(...allowed), maxA=Math.max(...allowed);target=Math.min(maxA,Math.max(minA,target));function mean(beta){let mx=-1e99;for(const n of allowed)mx=Math.max(mx,Math.log(p[n])+beta*n);let Z=0,E=0;for(const n of allowed){let w=Math.exp(Math.log(p[n])+beta*n-mx);Z+=w;E+=n*w}return E/Z}let lo=-80,hi=80;for(let k=0;k<90;k++){let mid=(lo+hi)/2;if(mean(mid)<target)lo=mid;else hi=mid}let beta=(lo+hi)/2,mx=-1e99;for(const n of allowed)mx=Math.max(mx,Math.log(p[n])+beta*n);let weights=Array(N).fill(0),Z=0;for(const n of allowed){weights[n]=Math.exp(Math.log(p[n])+beta*n-mx);Z+=weights[n]}let out=Array(N).fill(0).map(()=>({re:0,im:0}));for(const n of allowed){let amp=Math.sqrt(weights[n]/Z);out[n]={re:amp*Math.cos(phase[n]),im:C.realOnly?0:amp*Math.sin(phase[n])}}return normalize(out)}
+function coherent(N,E){let a=Math.sqrt(Math.max(0,E)),f=factorials(N),arr=[];let norm=Math.exp(-a*a/2);for(let n=0;n<N;n++)arr.push({re:norm*Math.pow(a,n)/Math.sqrt(f[n]),im:0});return normalize(arr)}
+function fock(N,n){return Array(N).fill(0).map((_,i)=>({re:i===n?1:0,im:0}))}
+function squeezed(N,E){let s=Math.asinh(Math.sqrt(Math.max(0,E))),t=Math.tanh(s),f=factorials(N),arr=Array(N).fill(0).map(()=>({re:0,im:0}));for(let k=0;2*k<N;k++){let n=2*k;let coeff=Math.sqrt(f[n])/(Math.pow(2,k)*f[k])*Math.pow(-t,k)/Math.sqrt(Math.cosh(s));arr[n]={re:coeff,im:0}}return normalize(arr)}
+function cat(N,alpha,phase){let cp=coherent(N,alpha*alpha),cm=[];let f=factorials(N),norm=Math.exp(-alpha*alpha/2);for(let n=0;n<N;n++)cm.push({re:norm*Math.pow(-alpha,n)/Math.sqrt(f[n]),im:0});let out=[];for(let n=0;n<N;n++){out.push({re:cp[n].re+Math.cos(phase)*cm[n].re,im:Math.sin(phase)*cm[n].re})}return normalize(out)}
+function randomState(N,C,rng){let arr=[];for(let n=0;n<N;n++)arr.push({re:rng.normal(),im:C.realOnly?0:rng.normal()});return projectEnergy(arr,C.targetEnergy,C)}
+function makeGrid(C){let gp=C.gridPoints;if(gp%2===0)gp++;let xs=[],dx=2*C.xMax/(gp-1);for(let i=0;i<gp;i++)xs.push(-C.xMax+i*dx);return {x:xs,p:xs,dx:dx,dp:dx,n:gp};}
+function wigner(c,G){const N=c.length,n=G.n,out=new Float64Array(n*n);for(let iy=0;iy<n;iy++){let p=G.p[iy];for(let ix=0;ix<n;ix++){let x=G.x[ix], ar=x/SQRT2, ai=p/SQRT2;let base=Math.exp(-(x*x+p*p))/PI;let wr=Array(N).fill(0), wi=Array(N).fill(0);wr[0]=base;let W=(c[0].re*c[0].re+c[0].im*c[0].im)*wr[0];for(let k=1;k<N;k++){let pr=wr[k-1], pi=wi[k-1];wr[k]=(2*(ar*pr-ai*pi))/Math.sqrt(k);wi[k]=(2*(ar*pi+ai*pr))/Math.sqrt(k);let rr=c[0].re*c[k].re+c[0].im*c[k].im;let ri=c[0].im*c[k].re-c[0].re*c[k].im;W+=2*(rr*wr[k]-ri*wi[k]);}
+for(let m=1;m<N;m++){let tr=wr[m],ti=wi[m];let prm=wr[m-1],pim=wi[m-1];wr[m]=(2*(ar*tr+ai*ti)-Math.sqrt(m)*prm)/Math.sqrt(m);wi[m]=(2*(ar*ti-ai*tr)-Math.sqrt(m)*pim)/Math.sqrt(m);W+=(c[m].re*c[m].re+c[m].im*c[m].im)*wr[m];for(let k=m+1;k<N;k++){let oldr=wr[k], oldi=wi[k];let prevR=wr[k-1],prevI=wi[k-1];wr[k]=(2*(ar*prevR-ai*prevI)-Math.sqrt(m)*tr)/Math.sqrt(k);wi[k]=(2*(ar*prevI+ai*prevR)-Math.sqrt(m)*ti)/Math.sqrt(k);tr=oldr;ti=oldi;let rr=c[m].re*c[k].re+c[m].im*c[k].im;let ri=c[m].im*c[k].re-c[m].re*c[k].im;W+=2*(rr*wr[k]-ri*wi[k]);}}
+out[iy*n+ix]=W;}}return out;}
+function noiseParams(C){let base=C.finiteNoise?Math.exp(-2*C.r):0;let nx=base+C.extraX,np=base+C.extraP;if(C.useDetector){let add=C.detStrength*(1-C.eta)/Math.max(C.eta,.02);nx+=add;np+=add}if(C.useThermal){let add=C.thermalStrength*(2*C.thermalN+1);nx+=add;np+=add}return {nx:Math.max(0,nx),np:Math.max(0,np),phase:C.phaseSigma,gain:C.gain};}
+function interp(W,G,x,p){let n=G.n,dx=G.dx,x0=G.x[0];let fx=(x-x0)/dx,fy=(p-x0)/dx;let ix=Math.floor(fx),iy=Math.floor(fy);if(ix<0||iy<0||ix>=n-1||iy>=n-1)return 0;let tx=fx-ix,ty=fy-iy;let a=W[iy*n+ix],b=W[iy*n+ix+1],c=W[(iy+1)*n+ix],d=W[(iy+1)*n+ix+1];return (1-tx)*(1-ty)*a+tx*(1-ty)*b+(1-tx)*ty*c+tx*ty*d;}
+function applyGain(W,G,g){if(Math.abs(g-1)<1e-12)return new Float64Array(W);let n=G.n,out=new Float64Array(W.length);let inv=1/(g*g);for(let iy=0;iy<n;iy++)for(let ix=0;ix<n;ix++){out[iy*n+ix]=interp(W,G,G.x[ix]/g,G.p[iy]/g)*inv}return out;}
+function kernel1D(varr,dx){if(varr<1e-10)return [1];let sigma=Math.sqrt(varr),R=Math.max(1,Math.ceil(4*sigma/dx)),arr=[],sum=0;for(let k=-R;k<=R;k++){let v=Math.exp(-0.5*(k*dx)*(k*dx)/varr);arr.push(v);sum+=v}return arr.map(v=>v/sum)}
+function convolveX(W,G,k){let n=G.n,R=(k.length-1)/2,out=new Float64Array(W.length);for(let y=0;y<n;y++)for(let x=0;x<n;x++){let s=0;for(let j=-R;j<=R;j++){let xx=x+j;if(xx>=0&&xx<n)s+=k[j+R]*W[y*n+xx]}out[y*n+x]=s}return out}
+function convolveY(W,G,k){let n=G.n,R=(k.length-1)/2,out=new Float64Array(W.length);for(let y=0;y<n;y++)for(let x=0;x<n;x++){let s=0;for(let j=-R;j<=R;j++){let yy=y+j;if(yy>=0&&yy<n)s+=k[j+R]*W[yy*n+x]}out[y*n+x]=s}return out}
+function phaseDiffuse(W,G,sigma){if(sigma<=1e-12)return W;let ph=[-2,-1,0,1,2].map(z=>z*sigma),wt=[.06136,.24477,.38774,.24477,.06136];let n=G.n,out=new Float64Array(W.length);for(let q=0;q<ph.length;q++){let c=Math.cos(ph[q]),s=Math.sin(ph[q]);for(let iy=0;iy<n;iy++){let p=G.p[iy];for(let ix=0;ix<n;ix++){let x=G.x[ix];let xo=x*c+p*s,po=-x*s+p*c;out[iy*n+ix]+=wt[q]*interp(W,G,xo,po);}}}return out}
+function applyChannel(W,G,P){let out=applyGain(W,G,P.gain);out=convolveX(out,G,kernel1D(P.nx,G.dx));out=convolveY(out,G,kernel1D(P.np,G.dp));out=phaseDiffuse(out,G,P.phase);let norm=0;for(const v of out)norm+=v;norm*=G.dx*G.dp;if(Math.abs(norm)>1e-12){for(let i=0;i<out.length;i++)out[i]/=norm}return out}
+function fidelity(Win,Wout,G){let s=0;for(let i=0;i<Win.length;i++)s+=Win[i]*Wout[i];return 2*PI*s*G.dx*G.dp}
+function negativity(W,G){let s=0;for(const v of W)s+=Math.abs(v)-v;return .5*s*G.dx*G.dp}
+function overlap(W1,W2){let a=0,b=0,c=0;for(let i=0;i<W1.length;i++){a+=W1[i]*W2[i];b+=W1[i]*W1[i];c+=W2[i]*W2[i]}return a/Math.sqrt(Math.max(1e-30,b*c))}
+function evaluate(c,C,G){let Win=wigner(c,G),P=noiseParams(C),Wout=applyChannel(Win,G,P),F=fidelity(Win,Wout,G),ni=negativity(Win,G),no=negativity(Wout,G),surv=ni>1e-5?no/ni:NaN;let score=F;if(C.objective==='negativity'){score=(1-C.negWeight)*F+C.negWeight*(Number.isFinite(surv)?Math.min(1.2,surv):0); if(ni<1e-5)score-=.2}let tail=0;for(let n=Math.max(0,c.length-3);n<c.length;n++)tail+=c[n].re*c[n].re+c[n].im*c[n].im;score-=C.tailPenalty*tail;return {c,Win,Wout,F,ni,no,surv,score,tail,energy:energy(c)};}
+function coeffText(c){let parts=[];for(let n=0;n<c.length;n++){let mag=Math.hypot(c[n].re,c[n].im);if(mag>1e-3){let ph=Math.atan2(c[n].im,c[n].re);parts.push(`${mag.toFixed(3)}e^{i${ph.toFixed(2)}}|${n}⟩`)}}return '|ψ⟩ = '+(parts.join(' + ')||'0');}
+function stopOptimization(){appState.stop=true;setStatus('Stopping after the current candidate...')}
+async function startOptimization(){let C=cfg();if(C.evenOnly&&C.oddOnly){setStatus('Even and odd parity cannot both be active.');return}appState.stop=false;appState.rng=new RNG(C.seed);$('startBtn').disabled=true;$('stopBtn').disabled=false;$('compareBtn').disabled=true;$('progressBar').style.width='0%';setStatus('Building grid and initial states...');await sleep(20);let G=makeGrid(C);appState.grid=G;let seeds=[coherent(C.Ncut,C.targetEnergy),squeezed(C.Ncut,C.targetEnergy),fock(C.Ncut,Math.round(Math.min(C.Ncut-1,C.targetEnergy)))];for(let i=0;i<C.starts;i++)seeds.push(randomState(C.Ncut,C,appState.rng));seeds=seeds.slice(0,Math.max(1,C.starts+2)).map(s=>projectEnergy(s,C.targetEnergy,C));let best=null,history=[],total=seeds.length*C.iterations,done=0;for(let si=0;si<seeds.length&&!appState.stop;si++){let cur=seeds[si];let curEval=evaluate(cur,C,G);if(!best||curEval.score>best.score)best=curEval;for(let it=0;it<C.iterations&&!appState.stop;it++){let step=C.mutationStep*(1-it/C.iterations*.75);let prop=cur.map(z=>({re:z.re+step*appState.rng.normal(),im:C.realOnly?0:z.im+step*appState.rng.normal()}));prop=projectEnergy(prop,C.targetEnergy,C);let ev=evaluate(prop,C,G);let temp=.015*(1-it/C.iterations);if(ev.score>curEval.score||appState.rng.next()<Math.exp((ev.score-curEval.score)/Math.max(temp,1e-6))){cur=prop;curEval=ev}if(ev.score>best.score)best=ev;history.push(best.F);done++;if(done%2===0){$('progressBar').style.width=`${Math.round(100*done/total)}%`;setStatus(`Running start ${si+1}/${seeds.length}, iteration ${it+1}/${C.iterations}\nBest fidelity = ${best.F.toFixed(6)}, score = ${best.score.toFixed(6)}, energy = ${best.energy.toFixed(4)}`);await sleep(1)}}}
+best.history=history;best.config=C;appState.best=best;renderResults(best,G);$('startBtn').disabled=false;$('stopBtn').disabled=true;$('compareBtn').disabled=false;$('progressBar').style.width='100%';setStatus(appState.stop?'Stopped. Showing best candidate found so far.':'Optimization finished. Results are ready.');showPage('results')}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+function renderResults(best,G){$('metricCards').innerHTML=metric('Fidelity',best.F)+metric('Energy',best.energy)+metric('Input negativity',best.ni)+metric('Output negativity',best.no)+metric('Survival',Number.isFinite(best.surv)?best.surv:'N/A')+metric('Tail prob.',best.tail)+metric('Score',best.score)+metric('Noise x/p',`${noiseParams(best.config).nx.toFixed(3)} / ${noiseParams(best.config).np.toFixed(3)}`);$('stateFormula').textContent=coeffText(best.c);drawHeatmap('winCanvas',best.Win,G);drawHeatmap('woutCanvas',best.Wout,G);drawPhoton('photonCanvas',best.c);drawLine('historyCanvas',[{name:'best F',values:best.history}],null,'candidate','fidelity')}
+function metric(k,v){let txt=(typeof v==='number'&&Number.isFinite(v))?v.toFixed(6):v;return `<div class="metric"><div class="k">${k}</div><div class="v">${txt}</div></div>`}
+function colorMap(v,maxAbs){let t=(v/maxAbs+1)/2;t=Math.max(0,Math.min(1,t));let r,g,b;if(t<.5){let u=t*2;r=Math.round(30+40*u);g=Math.round(80+120*u);b=Math.round(180+55*u)}else{let u=(t-.5)*2;r=Math.round(235-20*u);g=Math.round(235-160*u);b=Math.round(235-170*u)}return [r,g,b]}
+function drawHeatmap(id,W,G){let c=$(id),ctx=c.getContext('2d'),n=G.n,img=ctx.createImageData(c.width,c.height);let max=0;for(const v of W)max=Math.max(max,Math.abs(v));max=max||1;for(let y=0;y<c.height;y++){let iy=Math.floor((c.height-1-y)/c.height*n);for(let x=0;x<c.width;x++){let ix=Math.floor(x/c.width*n),v=W[iy*n+ix];let [r,g,b]=colorMap(v,max);let k=4*(y*c.width+x);img.data[k]=r;img.data[k+1]=g;img.data[k+2]=b;img.data[k+3]=255}}ctx.putImageData(img,0,0);ctx.strokeStyle='#cbd5e1';ctx.strokeRect(0,0,c.width,c.height)}
+function drawPhoton(id,c){let canvas=$(id),ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='#08101f';ctx.fillRect(0,0,W,H);let probs=c.map(z=>z.re*z.re+z.im*z.im),mx=Math.max(...probs,.01),pad=42,bw=(W-2*pad)/probs.length;ctx.strokeStyle='#243656';ctx.strokeRect(pad,20,W-2*pad,H-60);for(let i=0;i<probs.length;i++){let h=(H-70)*probs[i]/mx;ctx.fillStyle='#38bdf8';ctx.fillRect(pad+i*bw+3,H-40-h,Math.max(2,bw-6),h);ctx.fillStyle='#cbd5e1';ctx.font='12px Segoe UI';ctx.fillText(i,pad+i*bw+bw/2-3,H-18)}ctx.fillStyle='#f8fafc';ctx.font='15px Segoe UI';ctx.fillText('P(n)=|cₙ|²',pad,17)}
+function drawLine(id,series,xvals,xlab,ylab){let canvas=$(id),ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,pad=48;ctx.clearRect(0,0,W,H);ctx.fillStyle='#08101f';ctx.fillRect(0,0,W,H);let all=[];series.forEach(s=>all=all.concat(s.values.filter(Number.isFinite)));let ymin=Math.min(...all,.0),ymax=Math.max(...all,1);if(ymax-ymin<1e-6){ymin-=.1;ymax+=.1}ctx.strokeStyle='#243656';ctx.strokeRect(pad,20,W-2*pad,H-70);ctx.fillStyle='#94a3b8';ctx.font='12px Segoe UI';ctx.fillText(ylab,pad,14);let colors=['#38bdf8','#34d399','#fbbf24','#fb7185','#a78bfa','#f472b6'];series.forEach((s,si)=>{ctx.strokeStyle=colors[si%colors.length];ctx.lineWidth=2;ctx.beginPath();s.values.forEach((v,i)=>{let x=pad+(W-2*pad)*(s.values.length<=1?0:i/(s.values.length-1));let y=20+(H-70)*(1-(v-ymin)/(ymax-ymin));if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();ctx.fillStyle=colors[si%colors.length];ctx.fillText(s.name,pad+10,36+16*si)});ctx.fillStyle='#94a3b8';ctx.fillText(xlab,W/2-24,H-16)}
+function drawBar(id,rows){let canvas=$(id),ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height,pad=50;ctx.clearRect(0,0,W,H);ctx.fillStyle='#08101f';ctx.fillRect(0,0,W,H);let vals=rows.map(r=>r.F),mx=Math.max(...vals,.01),bw=(W-2*pad)/rows.length;ctx.strokeStyle='#243656';ctx.strokeRect(pad,20,W-2*pad,H-90);rows.forEach((r,i)=>{let h=(H-100)*r.F/mx;ctx.fillStyle=i===0?'#38bdf8':'#2563eb';ctx.fillRect(pad+i*bw+4,H-70-h,Math.max(2,bw-8),h);ctx.save();ctx.translate(pad+i*bw+bw/2,H-62);ctx.rotate(-Math.PI/5);ctx.fillStyle='#cbd5e1';ctx.font='11px Segoe UI';ctx.fillText(r.name,0,0);ctx.restore();});ctx.fillStyle='#f8fafc';ctx.font='15px Segoe UI';ctx.fillText('Teleportation fidelity',pad,17)}
+function runComparison(){let best=appState.best;if(!best){setCompStatus('Run optimization first.');return}setCompStatus('Running comparison in browser...');setTimeout(()=>{let C=best.config,G=appState.grid;let states=[['Optimized',best.c],['Coherent',coherent(C.Ncut,C.targetEnergy)],['Squeezed',squeezed(C.Ncut,C.targetEnergy)],['Fock |N≈E⟩',fock(C.Ncut,Math.round(Math.min(C.Ncut-1,C.targetEnergy)))],['Even cat',cat(C.Ncut,Math.max(.8,Math.sqrt(Math.max(.2,C.targetEnergy))),0)],['Odd cat',cat(C.Ncut,Math.max(.8,Math.sqrt(Math.max(.2,C.targetEnergy))),PI)]];let rows=[];for(const [name,c] of states){let ev=evaluate(projectEnergy(c,C.targetEnergy,C),C,G);rows.push({name,F:ev.F,E:ev.energy,ni:ev.ni,no:ev.no,surv:ev.surv,ov:overlap(ev.Win,ev.Wout),c:ev.c,Win:ev.Win})}rows.sort((a,b)=>b.F-a.F);let tb=$('comparisonTable').querySelector('tbody');tb.innerHTML='';rows.forEach(r=>{let tr=document.createElement('tr');tr.innerHTML=`<td>${r.name}</td><td>${r.F.toFixed(6)}</td><td>${r.E.toFixed(4)}</td><td>${r.ni.toExponential(3)}</td><td>${r.no.toExponential(3)}</td><td>${Number.isFinite(r.surv)?r.surv.toFixed(4):'N/A'}</td><td>${r.ov.toFixed(4)}</td>`;tb.appendChild(tr)});drawBar('compareBarCanvas',rows);let rvals=[];for(let i=0;i<22;i++)rvals.push(0.05+i*(2.3/21));let names=rows.slice(0,4);let series=[];for(const row of names){let vals=[];for(const rv of rvals){let C2={...C,r:rv};let Wout=applyChannel(row.Win,G,noiseParams(C2));vals.push(fidelity(row.Win,Wout,G))}series.push({name:row.name,values:vals})}drawLine('sweepCanvas',series,rvals,'squeezing r','fidelity');appState.comparison=rows;setCompStatus('Comparison finished. Results are displayed in the browser only; no files are written.');showPage('comparison')},50)}
+</script>
+</body>
+</html>
