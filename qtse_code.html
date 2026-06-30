@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QTSE Python Code | Yusuf Kayra Gül</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="site-name">
+                <a href="index.html">Yusuf Kayra Gül</a>
+            </div>
+
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="qtse.html">QTSE Project</a>
+                <a href="index.html#projects">Research</a>
+                <a href="courses.html">Courses</a>
+                <a href="assets/cv.pdf" target="_blank">CV</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page code-page">
+
+        <section class="content-section">
+            <h2>Quantum Teleportation State Explorer — Python Source Code</h2>
+
+            <p>
+                This page displays the desktop Python version of the Quantum Teleportation State Explorer.
+                The application uses Python, Tkinter, NumPy, SciPy, Matplotlib, and QuTiP to study
+                continuous-variable quantum teleportation, Wigner-function diagnostics, noisy teleportation
+                channels, and constrained optimization of Fock-basis quantum states.
+            </p>
+
+            <div class="button-row code-buttons">
+                <a href="assets/code/Quantum_Teleportation_State_Explorer-Demo.Developing.14.py" download>
+                    Download Python Code
+                </a>
+
+                <a href="qtse.html">
+                    Back to Project Page
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Source Code</h2>
+
+            <div class="code-toolbar">
+                <span id="code-status">Loading source code...</span>
+            </div>
+
+            <pre class="code-viewer"><code id="python-code"></code></pre>
+        </section>
+
+        <footer>
+            <p><a href="index.html">Return to main page</a></p>
+        </footer>
+
+    </main>
+
+    <script>
+        const codePath = "assets/code/Quantum_Teleportation_State_Explorer-Demo.Developing.14.py";
+        const codeBlock = document.getElementById("python-code");
+        const statusText = document.getElementById("code-status");
+
+        fetch(codePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Could not load the Python file.");
+                }
+                return response.text();
+            })
+            .then(code => {
+                codeBlock.textContent = code;
+                statusText.textContent = "Source file loaded successfully.";
+            })
+            .catch(error => {
+                codeBlock.textContent =
+                    "The Python source file could not be loaded.\n\n" +
+                    "Check that this file exists exactly at:\n" +
+                    codePath + "\n\n" +
+                    "GitHub Pages is case-sensitive, so the file name and folder names must match exactly.";
+                statusText.textContent = "Error loading source file.";
+            });
+    </script>
+
+</body>
+</html>
