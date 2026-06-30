@@ -1,3 +1,8 @@
+"""
+You can run this to open and try the app on desktop
+"""
+
+
 from __future__ import annotations
 
 import queue
@@ -18,8 +23,6 @@ import numpy as np
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-# Do not force matplotlib.use("TkAgg") in Spyder.
-# Spyder usually starts a Qt backend first; forcing TkAgg then causes an ImportError.
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
