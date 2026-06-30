@@ -629,3 +629,41 @@ footer {
         min-height: 38px;
     }
 }
+
+/* CODE VIEWER PAGE */
+
+.code-page {
+    max-width: 1180px;
+}
+
+.code-buttons {
+    margin-top: 22px;
+}
+
+.code-toolbar {
+    background: #fbfbfa;
+    border: 1px solid var(--line);
+    border-bottom: none;
+    padding: 10px 14px;
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.code-viewer {
+    margin: 0;
+    max-height: 760px;
+    overflow: auto;
+    background: #101418;
+    color: #e8e8e8;
+    border: 1px solid var(--line);
+    padding: 22px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13.5px;
+    line-height: 1.55;
+    white-space: pre;
+}
+
+.code-viewer code {
+    font-family: inherit;
+}
