@@ -667,3 +667,56 @@ footer {
 .code-viewer code {
     font-family: inherit;
 }
+
+.archive-intro {
+    max-width: 760px;
+    margin: 0 auto 2rem auto;
+    color: var(--muted-text);
+    font-size: 1rem;
+}
+
+.photo-archive {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.photo-entry {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: var(--soft-shadow);
+}
+
+.photo-entry summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--heading-color);
+}
+
+.photo-entry summary:hover {
+    color: var(--link-color);
+}
+
+.photo-content {
+    margin-top: 1rem;
+}
+
+.photo-content img {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    margin: 0 auto 0.8rem auto;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.photo-content p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--body-text);
+    line-height: 1.6;
+}
